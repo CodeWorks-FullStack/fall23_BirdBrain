@@ -4,7 +4,7 @@ export class Bird {
     this.name = data.name
     this.imgUrl = data.imgUrl
     this.test = data.test
-    this.jeremyIsCool = true
+    this.jeremyIsCool = "true"
     this.location = data.location
     this.canFly = data.canFly
     this.isBird = data.isBird
