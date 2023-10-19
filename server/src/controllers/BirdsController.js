@@ -13,6 +13,7 @@ export class BirdsController extends BaseController{
     .delete('/:birdId', this.destroyBird)
   }
 
+  // GETTING ALL THE BIRDS
   async getBirds(req, res, next) {
     try {
       const birds = await birdsService.getBirds()
