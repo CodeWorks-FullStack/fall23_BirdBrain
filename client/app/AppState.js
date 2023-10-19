@@ -1,3 +1,4 @@
+import { Bird } from './models/Bird.js'
 import { Value } from './models/Value.js'
 import { EventEmitter } from './utils/EventEmitter.js'
 import { isValidProp } from './utils/IsValidProp.js'
@@ -12,6 +13,10 @@ class ObservableAppState extends EventEmitter {
   /** @type {import('./models/Value.js').Value[]} */
   values = loadState('values', [Value])
   socketData = []
+
+
+  /** @type {Bird[]} */
+  birds = []
 
   // Used to load initial data
   init() {
