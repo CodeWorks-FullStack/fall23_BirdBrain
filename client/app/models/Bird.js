@@ -23,7 +23,7 @@ export class Bird {
             <p class="fs-3">${this.name}</p>
             <p class="fs-4">👀 3</p>
           </div>
-          <img class="rounded-circle"
+          <img class="rounded-circle creator-picture"
             src="${this.creator.picture}"
             alt="${this.creator.name}">
         </div>

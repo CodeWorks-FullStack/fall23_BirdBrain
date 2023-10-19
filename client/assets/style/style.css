@@ -11,3 +11,9 @@
   object-fit: cover;
   object-position: center;
 }
+
+.creator-picture{
+  width: 37.8%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}

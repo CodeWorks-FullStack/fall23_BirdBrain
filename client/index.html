@@ -18,23 +18,24 @@
 <body>
   <!-- SECTION -->
   <header>
-    <nav class="navbar navbar-dark navbar-expand bg-dark text-light px-2">
-      <a class="navbar-brand" href="#">
-        <img src="https://codeworks.blob.core.windows.net/public/assets/img/cw-mark.png" height="45" alt=""
-          loading="lazy">
-        <span class="ml-2">fall23_BirdBrain</span>
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <!-- NAVLINKS -->
-          <a href="#/about" class="nav-link">About</a>
+    <nav class="container-fluid p-3">
+      <section class="row">
+        <div class="col-4">
+          <h1>BirdBrain</h1>
+
         </div>
-      </div>
-      <div class="flex-grow-1 justify-content-end align-items-center d-flex" id="authstate"></div>
+        <div class="col-3 text-center">
+          <button class="btn btn-outline-dark fs-1" data-bs-toggle="modal" data-bs-target="#birdFormModal">
+            🦅
+          </button>
+
+        </div>
+        <div class="col-4">
+          <div class="justify-content-end align-items-center d-flex" id="authstate"></div>
+
+        </div>
+      </section>
+
     </nav>
   </header>
 
@@ -72,6 +73,34 @@
       <p class="mb-0"><small>Made with 💖 by CodeWorks</small></p>
     </div>
   </footer>
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="birdFormModal" tabindex="-1" aria-labelledby="modalTitle" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="modalTitle">Create Bird</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- FORM -->
+          <form onsubmit="app.BirdsController.createBird(event)">
+            <div class="form-floating mb-3">
+              <input required type="text" name="name" class="form-control" id="name" placeholder="Bird Name..."
+                minlength="1" maxlength="50">
+              <label for="name">Bird Name</label>
+            </div>
+            <div class="text-end">
+              <button type="submit" class="btn btn-outline-success">Submit</button>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
 
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="https://cdn.auth0.com/js/auth0-spa-js/1.22/auth0-spa-js.production.js"></script>
