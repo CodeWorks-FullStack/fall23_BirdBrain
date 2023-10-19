@@ -1,1 +1,19 @@
 /* BASIC STYLES HERE */
+.bird-card{
+  border: 2px solid black;
+  background-color: #88CDDD;
+  box-shadow: 2px 2px #F3FD37;
+}
+
+.bird-card-img{
+  width: 100%;
+  height: 45vh;
+  object-fit: cover;
+  object-position: center;
+}
+
+.creator-picture{
+  width: 37.8%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
