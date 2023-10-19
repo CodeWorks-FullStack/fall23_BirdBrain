@@ -11,11 +11,19 @@ function _drawBirds() {
   setHTML('birdCards', content)
 }
 
+function _drawActiveBird() {
+  const bird = AppState.activeBird
+  setHTML('birdDetails', bird.BirdDetailsTemplate)
+  // @ts-ignore
+  bootstrap.Modal.getOrCreateInstance('#birdDetailsModal').show()
+}
+
 export class BirdsController {
   constructor () {
     this.getBirds()
 
     AppState.on('birds', _drawBirds)
+    AppState.on('activeBird', _drawActiveBird)
   }
 
   async getBirds() {
@@ -32,6 +40,7 @@ export class BirdsController {
       event.preventDefault()
       const form = event.target
       const birdData = getFormData(form)
+      birdData.canFly = birdData.canFly == 'on'
       console.log('Bird Data', birdData);
       await birdsService.createBird(birdData)
       form.reset()
@@ -40,6 +49,14 @@ export class BirdsController {
       Pop.success('New bird succesfully created!')
     } catch (error) {
       console.error(error);
+      Pop.error(error)
+    }
+  }
+
+  setActiveBird(birdId) {
+    try {
+      birdsService.setActiveBird(birdId)
+    } catch (error) {
       Pop.error(error)
     }
   }

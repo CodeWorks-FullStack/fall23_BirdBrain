@@ -15,7 +15,7 @@ export class Bird {
   get BirdCardTemplate() {
     return `
     <div class="col-12 col-md-3 p-4">
-      <div class="bird-card rounded">
+      <div onclick="app.BirdsController.setActiveBird('${this.id}')" class="bird-card rounded selectable" role="button" title="See details about ${this.name}">
         <img class="bird-card-img rounded-top" src="${this.imgUrl}"
           alt="${this.name}">
         <div class="d-flex justify-content-between p-3">
@@ -30,6 +30,42 @@ export class Bird {
       </div>
     </div>
     `
+  }
+
+  get BirdDetailsTemplate() {
+    return `
+    <div class="container-fluid">
+      <section class="row">
+        <div class="col-12 col-md-7">
+          <img class="img-fluid" src="${this.imgUrl}" alt="${this.name}">
+        </div>
+        <div class="col-12 col-md-5">
+          <h1>${this.name}</h1>
+          <h2>At the ${this.location}</h2>
+          <h3>On ${this.createdAt.toLocaleDateString()}</h3>
+          <h3>At ${this.createdAt.toLocaleTimeString()}</h3>
+          <div class="fs-1">
+            
+            ${this.ComputeFlyIcon}
+            ${this.ComputeBirdIcon}
+          </div>
+        </div>
+      </section>
+    </div>
+    `
+  }
+
+  get ComputeFlyIcon() {
+    return this.canFly ?
+      '<i class="mdi mdi-airplane"></i>'
+      :
+      '<i class="mdi mdi-car"></i>'
+  }
+  get ComputeBirdIcon() {
+    return this.isBird ?
+      '<i class="mdi mdi-bird"></i>'
+      :
+      '<i class="mdi mdi-video"></i>'
   }
 }
 

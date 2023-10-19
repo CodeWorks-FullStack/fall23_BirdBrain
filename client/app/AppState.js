@@ -18,6 +18,9 @@ class ObservableAppState extends EventEmitter {
   /** @type {Bird[]} */
   birds = []
 
+  /** @type {Bird | null} */
+  activeBird = null
+
   // Used to load initial data
   init() {
 
