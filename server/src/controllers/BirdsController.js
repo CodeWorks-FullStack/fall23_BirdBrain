@@ -1,6 +1,7 @@
 import { Auth0Provider } from "@bcwdev/auth0provider";
 import BaseController from "../utils/BaseController.js";
 import { birdsService } from "../services/BirdsService.js";
+import { watchersService } from "../services/WatchersService.js";
 
 export class BirdsController extends BaseController{
   constructor() {
@@ -8,6 +9,7 @@ export class BirdsController extends BaseController{
     this.router
     .get('', this.getBirds)
     .get("/:birdId", this.getBirdById)
+    .get("/:birdId/watchers", this.getWatchersByBirdId)
     .use(Auth0Provider.getAuthorizedUserInfo)
     .post('', this.createBird )
     .delete('/:birdId', this.destroyBird)
@@ -50,6 +52,18 @@ export class BirdsController extends BaseController{
       const userId = req.userInfo.id
       const message = await birdsService.destroyBird(birdId, userId)
       return res.send(message)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  // SECTION WATCHERS
+
+  async getWatchersByBirdId(req, res, next) {
+    try {
+      const birdId = req.params.birdId
+      const watchers = await watchersService.getWatchersByBirdId(birdId)
+      return res.send(watchers)
     } catch (error) {
       next(error)
     }

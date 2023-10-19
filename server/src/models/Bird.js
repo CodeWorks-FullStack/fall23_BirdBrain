@@ -15,3 +15,10 @@ BirdSchema.virtual("creator", {
   ref: "Account",
   justOne: true
 })
+
+BirdSchema.virtual('watcherCount', {
+  count: true,
+  localField: "_id",
+  foreignField: "birdId",
+  ref: "Watcher"
+})

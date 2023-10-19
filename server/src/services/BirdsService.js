@@ -19,7 +19,7 @@ class BirdsService {
   }
 
   async getBirds() {
-    const birds = await dbContext.Birds.find().populate('creator', '-email -subs')
+    const birds = await dbContext.Birds.find().populate('creator watcherCount', '-email -subs')
     return birds
   }
   async createBird(birdData) {
