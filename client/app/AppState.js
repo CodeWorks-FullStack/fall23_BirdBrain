@@ -1,5 +1,6 @@
 import { Bird } from './models/Bird.js'
 import { Value } from './models/Value.js'
+import { Watcher } from './models/Watcher.js'
 import { EventEmitter } from './utils/EventEmitter.js'
 import { isValidProp } from './utils/IsValidProp.js'
 import { loadState } from './utils/Store.js'
@@ -20,6 +21,9 @@ class ObservableAppState extends EventEmitter {
 
   /** @type {Bird | null} */
   activeBird = null
+
+  /** @type {Watcher[]} */
+  watchers = []
 
   // Used to load initial data
   init() {

@@ -12,6 +12,7 @@ export class Bird {
     this.createdAt = new Date(data.createdAt)
     this.updatedAt = new Date(data.updatedAt)
     this.creator = data.creator
+    this.watcherCount = data.watcherCount
   }
 
   get BirdCardTemplate() {
@@ -23,7 +24,7 @@ export class Bird {
         <div class="d-flex justify-content-between p-3">
           <div>
             <p class="fs-3">${this.name}</p>
-            <p class="fs-4">👀 3</p>
+            <p class="fs-4">👀 ${this.watcherCount}</p>
           </div>
           <img class="rounded-circle creator-picture"
             src="${this.creator.picture}"
@@ -36,24 +37,20 @@ export class Bird {
 
   get BirdDetailsTemplate() {
     return `
-    <div class="container-fluid">
-      <section class="row">
-        <div class="col-12 col-md-7">
-          <img class="img-fluid" src="${this.imgUrl}" alt="${this.name}">
+      <div class="col-12 col-md-7">
+        <img class="img-fluid" src="${this.imgUrl}" alt="${this.name}">
+      </div>
+      <div class="col-12 col-md-5">
+        <h1>${this.name}</h1>
+        <h2>At the ${this.location}</h2>
+        <h3>On ${this.createdAt.toLocaleDateString()}</h3>
+        <h3>At ${this.createdAt.toLocaleTimeString()}</h3>
+        <div class="fs-1">
+          ${this.ComputeFlyIcon}
+          ${this.ComputeBirdIcon}
         </div>
-        <div class="col-12 col-md-5">
-          <h1>${this.name}</h1>
-          <h2>At the ${this.location}</h2>
-          <h3>On ${this.createdAt.toLocaleDateString()}</h3>
-          <h3>At ${this.createdAt.toLocaleTimeString()}</h3>
-          <div class="fs-1">
-            
-            ${this.ComputeFlyIcon}
-            ${this.ComputeBirdIcon}
-          </div>
-        </div>
-      </section>
-    </div>
+        <button onclick="app.WatchersController.createWatcher()" class="btn btn-success">I've seen that ''bird''!</button>
+      </div>
     `
   }
 
