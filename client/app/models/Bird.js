@@ -3,7 +3,7 @@ export class Bird {
     this.id = data.id || data._id
     this.name = data.name
     this.imgUrl = data.imgUrl
-    this.jeremyIsCool = true
+    this.jeremyIsCool = false
     this.location = data.location
     this.canFly = data.canFly
     this.isBird = data.isBird
